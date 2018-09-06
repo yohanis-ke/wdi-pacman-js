@@ -1,6 +1,7 @@
 // Setup initial game stats
 var score = 0;
 var lives = 2;
+var pellets = 4;
 
 
 // Define your ghosts here
@@ -13,7 +14,7 @@ var inky = {
   edible: false
 };
 
-var Blinky = {
+var blinky = {
   menu_option: '2',
   name: 'Blinky',
   colour: 'Cyan',
@@ -21,7 +22,7 @@ var Blinky = {
   edible: false
 };
 
-var Pinky = {
+var pinky = {
   menu_option: '3',
   name: 'Pinky',
   colour: 'Pink',
@@ -29,7 +30,7 @@ var Pinky = {
   edible: false
 };
 
-var Clyde = {
+var clyde = {
   menu_option: '4',
   name: 'Clyde',
   colour: 'Orange',
@@ -38,7 +39,7 @@ var Clyde = {
 };
 // replace this comment with your four ghosts setup as objects
 
-var ghosts = [inky,Blinky,Pinky,Clyde];
+var ghosts = [inky,blinky,pinky,clyde];
 
 // Draw the screen functionality
 function drawScreen() {
@@ -61,7 +62,20 @@ function displayStats() {
 function displayMenu() {
   console.log('\n\nSelect Option:\n');  // each \n creates a new line
   console.log('(d) Eat Dot');
+  if (pellets > 0) console.log('(p) Eat Power-Pellet');
+  console.log('(1) Eat Inky ' + change(inky.edible));
+  console.log('(2) Eat Blinky '+ change(blinky.edible));
+  console.log('(3) Eat Pinky '+ change(pinky.edible));
+  console.log('(4) Eat Clyde '+ change(clyde.edible));
   console.log('(q) Quit');
+}
+
+function change(type) {
+  if (type) {
+    return '(edible)'
+  }else {
+    return '(inedible)'
+  }
 }
 
 function displayPrompt() {
